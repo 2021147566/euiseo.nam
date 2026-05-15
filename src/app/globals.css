@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* ── Light mode ── */
+:root {
+  --bg:       #F7FAF8;
+  --card:     #FFFFFF;
+  --muted:    #EAF3EF;
+  --hover:    #DDECE6;
+  --fg:       #0F1F1A;
+  --fg-muted: #2F4F43;
+  --brand:    #0F3D2E;
+  --brand-2:  #145A43;
+  --brand-3:  #2E7D63;
+  --border:   #B9D2C9;
+}
+
+/* ── Dark mode ── */
+.dark {
+  --bg:       #0B0F0E;
+  --card:     #111916;
+  --muted:    #162420;
+  --hover:    #1C2E28;
+  --fg:       #E8F2EE;
+  --fg-muted: #A1C9B8;
+  --brand:    #2E7D63;
+  --brand-2:  #4EA88A;
+  --brand-3:  #77C8AA;
+  --border:   #1E3028;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html,
+body {
+  cursor: url("/cursor-basketball.svg") 4 3, auto;
+}
+
+a,
+button,
+summary,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: url("/cursor-basketball.svg") 4 3, pointer;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 320ms ease-out both;
+}
+
+.animate-soft-pop {
+  animation: soft-pop 260ms ease-out both;
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-8px) translateX(4px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+::selection { background: #A7D8C4; color: #0F3D2E; }
+.dark ::selection { background: #0F3D2E; color: #A7D8C4; }
