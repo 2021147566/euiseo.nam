@@ -27,9 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Windows lockfile은 Linux optional native deps를 누락함 (npm/cli#4828)
+          rm -rf node_modules
           npm install
-          # Windows에서 생성된 lockfile은 Linux 네이티브 바이너리를 누락할 수 있음
           npm install lightningcss-linux-x64-gnu@$(node -p "require('lightningcss/package.json').version")
+          npm install @tailwindcss/oxide-linux-x64-gnu@$(node -p "require('@tailwindcss/oxide/package.json').version")
 
       - name: Build
         run: npm run build
